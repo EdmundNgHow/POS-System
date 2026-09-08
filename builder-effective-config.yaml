@@ -1,0 +1,21 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.tunasbadmintonsportcentre.pos
+productName: Tunas Badminton Sport Centre
+files:
+  - filter:
+      - electron/**/*
+      - public/**/*
+      - db/**/*
+      - server.js
+      - package.json
+win:
+  target:
+    - nsis
+  artifactName: Tunas-Badminton-Sport-Centre-Setup-${version}.${ext}
+  signAndEditExecutable: false
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+electronVersion: 31.7.7

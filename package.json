@@ -1,0 +1,50 @@
+{
+  "name": "tunas-badminton-sport-centre",
+  "version": "1.0.0",
+  "description": "Tunas Badminton Sport Centre POS system (web + desktop executable)",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "db:init": "node scripts/init-mysql.js",
+    "desktop": "electron .",
+    "build:win": "electron-builder --win nsis",
+    "build:exe": "electron-packager . \"Tunas Badminton Sport Centre\" --platform=win32 --arch=x64 --out=dist --overwrite --asar --prune=true"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "qrcode": "^1.5.4",
+    "sync-mysql": "^3.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^31.0.2",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "appId": "com.tunasbadmintonsportcentre.pos",
+    "productName": "Tunas Badminton Sport Centre",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "public/**/*",
+      "db/**/*",
+      "server.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "Tunas-Badminton-Sport-Centre-Setup-${version}.${ext}",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
